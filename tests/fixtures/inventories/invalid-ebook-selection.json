@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "issue": {
+    "issue_key": "wisereads-vol-155",
+    "issue_kind": "standard",
+    "issue_number": 155,
+    "issue_label": "Vol. 155",
+    "source_url": "https://wise.readwise.io/issues/wisereads-vol-155/",
+    "discovered_at": "2026-08-12T10:00:00+08:00",
+    "detail_page_item_count": 1
+  },
+  "items": [
+    {
+      "item_id": "item-01",
+      "position": 1,
+      "title": "Ranked Ebook",
+      "creator": "Publisher One",
+      "original_url": "https://example.com/ebook",
+      "content_type": "ebook",
+      "selection_basis": "highlight-ranked",
+      "access_status": "SUMMARY_ONLY",
+      "alternate_url": null,
+      "failure_reason": null
+    }
+  ]
+}

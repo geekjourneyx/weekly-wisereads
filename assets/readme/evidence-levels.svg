@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title>Weekly Wisereads evidence levels</title>
+  <desc>Editorial diagram showing that access status and judgment type are orthogonal. The access-status panel lists FULL, PARTIAL, ALTERNATE, SUMMARY_ONLY, and UNAVAILABLE. The judgment-type panel lists FACTUAL RELIABILITY, EDITORIAL SIGNIFICANCE, BIAS / MISSING VIEWS, and SELECTION LIMITS.</desc>
+  <rect width="900" height="900" fill="#080808" />
+  <text x="72" y="80" fill="#C9A86A" font-size="36" font-family="Georgia, 'Times New Roman', serif" letter-spacing="4">
+    EVIDENCE LEVELS
+  </text>
+  <text x="72" y="124" fill="#F2EFE8" font-size="34" font-family="Georgia, 'Times New Roman', serif">
+    Access status and judgment type
+  </text>
+  <text x="72" y="164" fill="#F2EFE8" font-size="34" font-family="Georgia, 'Times New Roman', serif">
+    are orthogonal.
+  </text>
+  <text x="72" y="204" fill="#F2EFE8" font-size="34" font-family="Georgia, 'Times New Roman', serif">
+    They are separate editorial dimensions,
+  </text>
+  <text x="72" y="244" fill="#F2EFE8" font-size="34" font-family="Georgia, 'Times New Roman', serif">
+    not a single score.
+  </text>
+
+  <text x="72" y="320" fill="#C9A86A" font-size="34" font-family="Georgia, 'Times New Roman', serif" letter-spacing="2">
+    ACCESS STATUS
+  </text>
+  <text x="72" y="652" fill="#C9A86A" font-size="34" font-family="Georgia, 'Times New Roman', serif" letter-spacing="2">
+    JUDGMENT TYPE
+  </text>
+
+  <rect x="72" y="344" width="756" height="252" fill="none" stroke="#F2EFE8" stroke-width="4" />
+  <rect x="72" y="676" width="756" height="196" fill="none" stroke="#F2EFE8" stroke-width="4" />
+
+  <line x1="72" y1="628" x2="828" y2="628" stroke="#9B968E" stroke-width="4" />
+  <line x1="450" y1="610" x2="450" y2="646" stroke="#9B968E" stroke-width="4" />
+  <path d="M442 620 L450 612 L458 620" fill="none" stroke="#9B968E" stroke-width="4" />
+  <path d="M442 636 L450 644 L458 636" fill="none" stroke="#9B968E" stroke-width="4" />
+
+  <g id="access-status-panel" fill="#F2EFE8">
+    <text x="104" y="394" font-size="34" font-family="Georgia, 'Times New Roman', serif">FULL</text>
+    <text x="104" y="440" font-size="34" font-family="Georgia, 'Times New Roman', serif">PARTIAL</text>
+    <text x="104" y="486" font-size="34" font-family="Georgia, 'Times New Roman', serif">ALTERNATE</text>
+    <text x="104" y="532" font-size="34" font-family="Georgia, 'Times New Roman', serif">SUMMARY_ONLY</text>
+    <text x="104" y="578" font-size="34" font-family="Georgia, 'Times New Roman', serif">UNAVAILABLE</text>
+  </g>
+
+  <g id="judgment-type-panel" fill="#F2EFE8">
+    <text x="104" y="724" font-size="34" font-family="Georgia, 'Times New Roman', serif">FACTUAL RELIABILITY</text>
+    <text x="104" y="770" font-size="34" font-family="Georgia, 'Times New Roman', serif">EDITORIAL SIGNIFICANCE</text>
+    <text x="104" y="816" font-size="34" font-family="Georgia, 'Times New Roman', serif">BIAS / MISSING VIEWS</text>
+    <text x="104" y="862" font-size="34" font-family="Georgia, 'Times New Roman', serif">SELECTION LIMITS</text>
+  </g>
+</svg>

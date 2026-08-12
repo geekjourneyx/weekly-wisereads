@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "issue": {
+    "issue_key": "wisereads-vol-155",
+    "issue_kind": "standard",
+    "issue_number": 155,
+    "issue_label": "Vol. 155",
+    "source_url": "https://wise.readwise.io/issues/wisereads-vol-155/",
+    "discovered_at": "2026-08-12T22:18:11+08:00",
+    "detail_page_item_count": 8
+  },
+  "items": [
+    {
+      "item_id": "item-01",
+      "position": 1,
+      "title": "The Shape of Things to Come",
+      "creator": "Steve Yegge",
+      "original_url": "https://yegge.ai/essays/the-shape-of-things-to-come/",
+      "content_type": "article",
+      "selection_basis": "highlight-ranked",
+      "access_status": "FULL",
+      "alternate_url": null,
+      "failure_reason": null
+    },
+    {
+      "item_id": "item-02",
+      "position": 2,
+      "title": "Don't be a meat proxy",
+      "creator": "Niklas Gruhn",
+      "original_url": "https://gruhn.me/blog/2026-08-03/",
+      "content_type": "article",
+      "selection_basis": "highlight-ranked",
+      "access_status": "FULL",
+      "alternate_url": null,
+      "failure_reason": null
+    },
+    {
+      "item_id": "item-03",
+      "position": 3,
+      "title": "LLMs reward expertise",
+      "creator": "Sean Goedecke",
+      "original_url": "https://seangoedecke.com/llms-reward-expertise/",
+      "content_type": "article",
+      "selection_basis": "highlight-ranked",
+      "access_status": "FULL",
+      "alternate_url": null,
+      "failure_reason": null
+    },
+    {
+      "item_id": "item-04",
+      "position": 4,
+      "title": "How to Make Your Job Optional - The Freedom Profile Matrix",
+      "creator": "Ali Abdaal",
+      "original_url": "https://youtube.com/watch/?v=oCVq-wAPqSs",
+      "content_type": "youtube",
+      "selection_basis": "highlight-ranked",
+      "access_status": "FULL",
+      "alternate_url": null,
+      "failure_reason": null
+    },
+    {
+      "item_id": "item-05",
+      "position": 5,
+      "title": "Someone asked me recently why I’ve become interested in aesthetics...",
+      "creator": "Patrick Collison",
+      "original_url": "https://x.com/patrickc/status/2083931939673878592/?rw_tt_thread=True",
+      "content_type": "tweet-thread",
+      "selection_basis": "highlight-ranked",
+      "access_status": "FULL",
+      "alternate_url": null,
+      "failure_reason": null
+    },
+    {
+      "item_id": "item-06",
+      "position": 6,
+      "title": "Shape Up: Stop Running In Circles And Ship Work That Matters",
+      "creator": "Ryan Singer",
+      "original_url": "https://readwise-assets.s3.amazonaws.com/media/wisereads/articles/shape-up-stop-running-in-circl/1373.pdf",
+      "content_type": "pdf",
+      "selection_basis": "highlight-ranked",
+      "access_status": "FULL",
+      "alternate_url": null,
+      "failure_reason": null
+    },
+    {
+      "item_id": "item-07",
+      "position": 7,
+      "title": "Big Time Off",
+      "creator": "DJ DiDonna",
+      "original_url": "https://readwise.io/reader/fd/482286861",
+      "content_type": "ebook",
+      "selection_basis": "curated-or-partnered-ebook",
+      "access_status": "PARTIAL",
+      "alternate_url": null,
+      "failure_reason": null
+    },
+    {
+      "item_id": "item-08",
+      "position": 8,
+      "title": "Trying Again",
+      "creator": "Steve Kamb",
+      "original_url": "https://stevekamb.substack.com/feed",
+      "content_type": "other",
+      "selection_basis": "page-stated-other",
+      "access_status": "ALTERNATE",
+      "alternate_url": "https://stevekamb.com/newsletter/",
+      "failure_reason": null
+    }
+  ]
+}

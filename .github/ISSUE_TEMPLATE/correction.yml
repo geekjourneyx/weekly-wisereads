@@ -1,0 +1,48 @@
+name: Correction request
+description: Report a factual or evidence-handling correction for a published Weekly Wisereads artifact.
+title: "[Correction] "
+labels:
+  - correction
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for evidence-backed corrections to repository content.
+  - type: input
+    id: report_path
+    attributes:
+      label: Report path
+      description: Path to the report or file that needs correction.
+      placeholder: reports/2026/2026-08-12-vol-155.md
+    validations:
+      required: true
+  - type: textarea
+    id: disputed_sentence
+    attributes:
+      label: Disputed sentence
+      description: Quote the exact sentence or short passage that should change.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_correction
+    attributes:
+      label: Proposed correction
+      description: Provide the replacement wording you believe is more accurate.
+    validations:
+      required: true
+  - type: input
+    id: first_party_source
+    attributes:
+      label: First-party source
+      description: Link the first-party source that supports the correction.
+      placeholder: https://example.com/original-source
+    validations:
+      required: true
+  - type: checkboxes
+    id: copyright_confirmation
+    attributes:
+      label: Copyright confirmation
+      options:
+        - label: I am not pasting copied source text beyond short necessary quotation.
+    validations:
+      required: true
