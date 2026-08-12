@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "issue": {
+    "issue_key": "wisereads-vol-155",
+    "issue_kind": "standard",
+    "issue_number": 155,
+    "issue_label": "Vol. 155",
+    "source_url": "https://wise.readwise.io/issues/wisereads-vol-155/",
+    "discovered_at": "2026-08-12T10:00:00+08:00",
+    "detail_page_item_count": 2
+  },
+  "items": [
+    {
+      "item_id": "item-01",
+      "position": 1,
+      "title": "First Article",
+      "creator": "Author One",
+      "original_url": "https://example.com/article",
+      "content_type": "article",
+      "selection_basis": "highlight-ranked",
+      "access_status": "FULL",
+      "alternate_url": null,
+      "failure_reason": null
+    },
+    {
+      "item_id": "item-02",
+      "position": 2,
+      "title": "Second Article",
+      "creator": "Author Two",
+      "original_url": "https://example.com/article",
+      "content_type": "article",
+      "selection_basis": "highlight-ranked",
+      "access_status": "FULL",
+      "alternate_url": null,
+      "failure_reason": null
+    }
+  ]
+}

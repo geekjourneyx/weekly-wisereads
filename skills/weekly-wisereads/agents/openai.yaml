@@ -1,0 +1,4 @@
+interface:
+  display_name: "Weekly Wisereads 深度解读"
+  short_description: "发现并深读 Weekly Wisereads，生成可验证的中文周报"
+  default_prompt: "Use $weekly-wisereads to discover and deeply interpret the latest Weekly Wisereads issue in Chinese."
