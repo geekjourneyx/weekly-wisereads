@@ -1667,6 +1667,21 @@ Do not create a Release, Discussion, announcement or social post in this phase.
 
 ### Task 12: Scheduled Task Contract, Supervised Launch, and Operations Handoff
 
+> **Implementation reconciliation — 2026-08-12:** Task 7 and Task 11 established
+> `references/atomic-publish-protocol.md` and `publication_runtime.py` as the
+> executable result-state authority. The draft-only `NOOP_NO_NEW_ISSUE` named
+> below has no distinct observable condition: after a valid homepage discovery,
+> the latest identity is either already present (`NOOP_ALREADY_PROCESSED`) or is
+> a new issue to process; a missing or ambiguous identity is
+> `BLOCKED_DISCOVERY`. Therefore the released Task 12 contract intentionally
+> omits `NOOP_NO_NEW_ISSUE`. This note supersedes that state in Steps 3 and 4
+> without changing the approved homepage-first or no-write behavior.
+> The live task identifier, conversation identifier and exact run timestamps
+> remain in private Scheduled state rather than this public repository; the
+> public runbook records the audited configuration and date only. This privacy
+> boundary supersedes the public task-ID and exact verification-timestamp
+> requirements in Steps 1, 3, 5 and 7.
+
 **Files:**
 - Create: `docs/operations/scheduled-task.md`
 - Create: `docs/operations/release-and-rollback.md`

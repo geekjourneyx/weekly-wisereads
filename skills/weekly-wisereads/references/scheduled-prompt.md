@@ -1,5 +1,7 @@
 # Scheduled prompt
 
+使用 `$weekly-wisereads` Skill 执行本次独立运行；不要依赖创建任务时的聊天历史。
+
 仓库：`geekjourneyx/weekly-wisereads`
 首页：`https://wise.readwise.io/`
 方法定义：`skills/weekly-wisereads/SKILL.md`
@@ -55,6 +57,16 @@
 3. 只有在需要写仓库时，才按照 `references/atomic-publish-protocol.md` 的原子流程写入 `main`。
 4. 写入后必须回读三个目标文件，校验 `issue_key`、canonical URL、归档顺序与提交 SHA。
 5. 若并发运行导致其他流程先发布同一期，返回 no-op，不得重复创建第二份状态。
+
+## 明确禁止
+
+- 不得写死或猜测期号、发布日期、详情页 URL；每次只从实时首页第一期开始。
+- 不得发明独立高亮人数、排名数据或任何来源未公开的数字。
+- 不得访问、推断或披露任何私人 Readwise 数据；只使用公开网页与仓库中已公开的元数据。
+- 不得写入 `geekjourneyx/weekly-wisereads` 之外的仓库。
+- 不得创建 Issue、Pull Request、Release、Discussion 或社交媒体内容。
+- 不得 force update、force push、改写历史或删除历史报告。
+- 不得修改根 README 的 `AUTO:LATEST` 与 `AUTO:RECENT` 区块之外内容。
 
 ## 每次运行最终返回
 
