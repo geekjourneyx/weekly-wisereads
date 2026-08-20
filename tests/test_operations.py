@@ -81,11 +81,13 @@ def test_scheduled_task_runbook_records_live_configuration_and_prompt_checksum()
     ):
         assert value in runbook
     assert "Task identifier: private" in runbook
-    assert "Configuration audited: `2026-08-12`" in runbook
+    assert "Configuration audited: `2026-08-20`" in runbook
     assert not re.search(r"\b[0-9a-f]{32}\b", runbook)
     assert re.search(r"Preflight dry run: `2026-[^`]+`", runbook)
     assert "Ownership: repository administrators and the private Scheduled task owner" in runbook
-    assert "First live execution: pending" in runbook
+    assert "First live execution: `2026-08-17T10:00:00+08:00`" in runbook
+    assert "stale cached homepage" in runbook
+    assert "BLOCKED_DISCOVERY_STALE" in runbook
     assert "it is not represented as a run of the newly created task" in runbook
     for field in ("Changed files", "degraded sources", "Unresolved risk", "issue label and URL"):
         assert field in runbook
@@ -140,6 +142,10 @@ def test_canonical_prompt_has_all_scheduled_safety_boundaries():
 
     for rule in (
         "$weekly-wisereads",
+        "python skills/weekly-wisereads/scripts/discovery.py",
+        "BLOCKED_DISCOVERY_STALE",
+        "不得将网页工具、搜索结果或中间缓存",
+        "只有实时发现成功后才能去重",
         "实时首页第一期",
         "不得发明独立高亮人数",
         "私人 Readwise 数据",
@@ -149,6 +155,18 @@ def test_canonical_prompt_has_all_scheduled_safety_boundaries():
         "不得修改根 README 的 `AUTO:LATEST` 与 `AUTO:RECENT` 区块之外内容",
     ):
         assert rule in prompt
+
+
+def test_skill_requires_fresh_origin_discovery_before_deduplication():
+    skill = _read("skills/weekly-wisereads/SKILL.md")
+
+    for rule in (
+        "python skills/weekly-wisereads/scripts/discovery.py",
+        "BLOCKED_DISCOVERY_STALE",
+        "Do not deduplicate until live discovery returns `DISCOVERED`",
+        "Cached browser, web-search, or intermediary results are auxiliary only",
+    ):
+        assert rule in skill
 
 
 def test_agent_rules_allow_reviewed_forward_fixes_without_history_rewrites():

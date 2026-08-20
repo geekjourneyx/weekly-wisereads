@@ -15,6 +15,7 @@ Terminal result states:
 Phase-specific blocked / failed states:
 
 - `BLOCKED_DISCOVERY`
+- `BLOCKED_DISCOVERY_STALE`
 - `BLOCKED_IDENTITY`
 - `BLOCKED_INVENTORY`
 - `BLOCKED_RESEARCH`
@@ -58,6 +59,7 @@ the fake-connector tests exercise both race branches without live GitHub writes.
 | Phase | Condition | Result |
 | --- | --- | --- |
 | discovery | homepage or detail page cannot establish one issue identity | `BLOCKED_DISCOVERY` |
+| discovery freshness | cache age or response date cannot prove a fresh origin read | `BLOCKED_DISCOVERY_STALE` |
 | identity | issue slug / number / kind stays ambiguous after re-check | `BLOCKED_IDENTITY` |
 | inventory | item boundaries, counts, or URLs violate the inventory contract | `BLOCKED_INVENTORY` |
 | research | one or more items never reach terminal status | `BLOCKED_RESEARCH` |

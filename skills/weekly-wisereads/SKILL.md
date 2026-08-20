@@ -29,6 +29,14 @@ Read only the references needed for the current phase, but route every run throu
 
 Always open `https://wise.readwise.io/` first. Do not guess the latest issue from memory, README, prior runs, or an old volume number.
 
+Run the repository's cache-bypassing discovery command before any duplicate check:
+
+```bash
+python skills/weekly-wisereads/scripts/discovery.py
+```
+
+The command sends `no-cache` / `no-store` request directives, rejects stale `Age` or `Date` evidence, fetches the homepage first, and confirms identity against the linked detail page. Cached browser, web-search, or intermediary results are auxiliary only; they must never override this origin-fresh result. If the command returns `BLOCKED_DISCOVERY_STALE`, stop without repository writes and surface the freshness reason. Do not deduplicate until live discovery returns `DISCOVERED`.
+
 From the homepage:
 
 1. identify the newest visible issue or special edition;

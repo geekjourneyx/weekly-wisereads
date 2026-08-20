@@ -1,9 +1,16 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
+import json
 import re
-from urllib.parse import urljoin, urlparse
+import secrets
+import sys
+from typing import Callable, TextIO
+from urllib.parse import parse_qsl, urlencode, urljoin, urlparse, urlunparse
+from urllib.request import Request, urlopen
 
 
 HOMEPAGE_URL = "https://wise.readwise.io/"
@@ -24,6 +31,146 @@ class DiscoveredIssue:
 class DiscoveryResult:
     state: str
     issue: DiscoveredIssue | None
+    failure_reason: str | None = None
+
+
+@dataclass(frozen=True)
+class FetchedPage:
+    url: str
+    body: str
+    http_age_seconds: int | None
+
+
+class StalePageError(RuntimeError):
+    pass
+
+
+def _cache_busted_url(url: str) -> str:
+    parsed = urlparse(url)
+    query = parse_qsl(parsed.query, keep_blank_values=True)
+    query.append(("_wisereads_fresh", secrets.token_urlsafe(12)))
+    return urlunparse(parsed._replace(query=urlencode(query)))
+
+
+def _same_document(actual_url: str, expected_url: str) -> bool:
+    actual = urlparse(actual_url)
+    expected = urlparse(expected_url)
+    actual_path = actual.path.rstrip("/") or "/"
+    expected_path = expected.path.rstrip("/") or "/"
+    return (
+        actual.scheme.lower() == expected.scheme.lower()
+        and actual.netloc.lower() == expected.netloc.lower()
+        and actual_path == expected_path
+    )
+
+
+def fetch_fresh_page(
+    url: str,
+    *,
+    max_http_age_seconds: int = 60,
+    max_response_clock_skew_seconds: int = 300,
+    now: datetime | None = None,
+    timeout_seconds: float = 30,
+) -> FetchedPage:
+    request = Request(
+        _cache_busted_url(url),
+        headers={
+            "Accept": "text/html,application/xhtml+xml",
+            "Cache-Control": "no-cache, no-store, max-age=0",
+            "Pragma": "no-cache",
+            "User-Agent": "weekly-wisereads-discovery/1",
+        },
+    )
+    with urlopen(request, timeout=timeout_seconds) as response:
+        body = response.read().decode(response.headers.get_content_charset() or "utf-8")
+        response_date_value = response.headers.get("Date")
+        if response_date_value is None:
+            raise StalePageError("Missing HTTP response Date header")
+        try:
+            response_date = parsedate_to_datetime(response_date_value)
+        except (TypeError, ValueError) as exc:
+            raise StalePageError(
+                f"Invalid HTTP response Date header: {response_date_value!r}"
+            ) from exc
+        if response_date.tzinfo is None:
+            response_date = response_date.replace(tzinfo=timezone.utc)
+        observed_at = now or datetime.now(timezone.utc)
+        response_clock_skew = abs((observed_at - response_date).total_seconds())
+        if response_clock_skew > max_response_clock_skew_seconds:
+            raise StalePageError(
+                "HTTP response Date differs from the run clock by "
+                f"{int(response_clock_skew)}s, exceeding "
+                f"{max_response_clock_skew_seconds}s"
+            )
+        age_value = response.headers.get("Age")
+        try:
+            http_age_seconds = int(age_value) if age_value is not None else None
+        except ValueError as exc:
+            raise StalePageError(f"Invalid HTTP Age header: {age_value!r}") from exc
+        if http_age_seconds is not None and http_age_seconds < 0:
+            raise StalePageError(f"Invalid HTTP Age header: {age_value!r}")
+        if http_age_seconds is not None and http_age_seconds > max_http_age_seconds:
+            raise StalePageError(
+                f"HTTP Age {http_age_seconds}s exceeds {max_http_age_seconds}s"
+            )
+        return FetchedPage(
+            url=response.geturl(),
+            body=body,
+            http_age_seconds=http_age_seconds,
+        )
+
+
+def discover_live_issue(
+    *,
+    fetch_page: Callable[[str], FetchedPage] = fetch_fresh_page,
+) -> DiscoveryResult:
+    try:
+        homepage = fetch_page(HOMEPAGE_URL)
+        if not _same_document(homepage.url, HOMEPAGE_URL):
+            return DiscoveryResult(
+                state="BLOCKED_DISCOVERY_IDENTITY",
+                issue=None,
+                failure_reason=f"Unexpected homepage final URL: {homepage.url}",
+            )
+        pending = discover_latest_issue(homepage.body)
+        if pending.state != "DETAIL_CONFIRMATION_REQUIRED" or pending.issue is None:
+            return pending
+        detail = fetch_page(pending.issue.source_url)
+        if not _same_document(detail.url, pending.issue.source_url):
+            return DiscoveryResult(
+                state="BLOCKED_DISCOVERY_IDENTITY",
+                issue=None,
+                failure_reason=f"Unexpected detail final URL: {detail.url}",
+            )
+        return discover_latest_issue(homepage.body, detail.body)
+    except StalePageError as exc:
+        return DiscoveryResult(
+            state="BLOCKED_DISCOVERY_STALE",
+            issue=None,
+            failure_reason=str(exc),
+        )
+    except (OSError, UnicodeError) as exc:
+        return DiscoveryResult(
+            state="BLOCKED_DISCOVERY",
+            issue=None,
+            failure_reason=str(exc),
+        )
+
+
+def main(
+    *,
+    fetch_page: Callable[[str], FetchedPage] = fetch_fresh_page,
+    stdout: TextIO = sys.stdout,
+) -> int:
+    result = discover_live_issue(fetch_page=fetch_page)
+    payload = {
+        "state": result.state,
+        "issue": asdict(result.issue) if result.issue is not None else None,
+        "failure_reason": result.failure_reason,
+    }
+    json.dump(payload, stdout, ensure_ascii=False, sort_keys=True)
+    stdout.write("\n")
+    return 0 if result.state == "DISCOVERED" else 2
 
 
 class _HomepageParser(HTMLParser):
@@ -153,3 +300,7 @@ def discover_latest_issue(homepage_html: str, detail_html: str | None = None) ->
         return DiscoveryResult(state="BLOCKED_DISCOVERY_IDENTITY", issue=None)
 
     return DiscoveryResult(state="DISCOVERED", issue=issue)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

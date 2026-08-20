@@ -23,10 +23,10 @@
 
 ## 发现阶段
 
-1. 先访问 `https://wise.readwise.io/`，确认最新一期是否更新。
-2. 只以首页所见最新一期或 special edition 为准，进入详情页后确定 `issue_key / issue_kind / issue_number / issue_label / source_url`。
-3. 如果首页与详情页无法稳定识别同一期，立即停止，不做任何仓库写入。
-4. 读取仓库已有报告，按 `issue_key` 主去重、按 canonical `source_url` 次去重；若已处理，返回 no-op。
+1. 在仓库根目录执行 `python skills/weekly-wisereads/scripts/discovery.py`。该脚本以禁止缓存请求实时访问 `https://wise.readwise.io/`，先取首页，再取首页第一期详情页确认身份。
+2. 只接受脚本返回的 `DISCOVERED` 身份；不得将网页工具、搜索结果或中间缓存识别出的期号作为权威结果。若返回 `BLOCKED_DISCOVERY_STALE`，立即停止、不写仓库，并明确报告缓存/响应时间新鲜度失败原因。
+3. 只以实时首页所见最新一期或 special edition 为准，确定 `issue_key / issue_kind / issue_number / issue_label / source_url`。如果首页与详情页无法稳定识别同一期，立即停止，不做任何仓库写入。
+4. 只有实时发现成功后才能去重：读取仓库已有报告，按 `issue_key` 主去重、按 canonical `source_url` 次去重；若已处理，返回 no-op。不得用已处理的旧期号解释一次失败或陈旧的发现结果。
 5. 冻结完整 `IssueInventory`：逐条记录顺序、类型、作者、URL、selection basis 与 `detail_page_item_count`，不得存储源全文。
 
 ## 研究阶段

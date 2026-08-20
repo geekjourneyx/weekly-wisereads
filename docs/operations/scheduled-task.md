@@ -11,12 +11,13 @@
 - Timezone: `Asia/Shanghai`
 - DTSTART: `20260817T100000`
 - RRULE: `FREQ=WEEKLY;BYDAY=MO;BYHOUR=10;BYMINUTE=0`
-- Configuration audited: `2026-08-12` after the latest private task update
+- Configuration audited: `2026-08-20` after the discovery-freshness incident repair
 - Preflight dry run: `2026-08-12`
 - Preflight result: `NOOP_ALREADY_PROCESSED` for `Vol. 155` at `https://wise.readwise.io/issues/wisereads-vol-155/`
 - Changed files: none; degraded sources: none; GitHub writes: zero; `main` stayed unchanged
 - Unresolved risk: the Automations interface exposes create, update and read-back but no manual run action; exact run timestamps remain in the private Scheduled UI
-- First live execution: pending the `2026-08-17T10:00:00+08:00` schedule; the owner must review and record its result before treating supervised invocation as complete
+- First live execution: `2026-08-17T10:00:00+08:00`; it incorrectly no-op'd after reading a stale cached homepage that still exposed Vol. 155, although Vol. 156 had already been published
+- Remediation: origin requests now bypass caches, reject stale `Age` / `Date` evidence as `BLOCKED_DISCOVERY_STALE`, confirm the detail identity, and perform deduplication only after `DISCOVERED`
 
 ```ical
 BEGIN:VEVENT
@@ -29,7 +30,7 @@ END:VEVENT
 
 - Canonical prompt: [`skills/weekly-wisereads/references/scheduled-prompt.md`](../../skills/weekly-wisereads/references/scheduled-prompt.md)
 - Normalization: UTF-8 with LF line endings
-- SHA-256: `537fed24485a1050e6581f310f947471f59b2666db67034c9824cae4b5e1a9bb`
+- SHA-256: `bad1890f045909ffc96be7bde9d4e75b90ee9658f0fde22eae9d4a31ea289b6a`
 - Skill: [`skills/weekly-wisereads/SKILL.md`](../../skills/weekly-wisereads/SKILL.md)
 
 The live task prompt was read back after creation and matched the normalized canonical prompt. Any semantic prompt change requires tests, a new checksum, task update, read-back verification and a forward-fix documentation commit.
