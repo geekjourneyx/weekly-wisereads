@@ -21,6 +21,7 @@ The report validator fails closed. Any finding below means `STOP_WITHOUT_WRITE`.
 ## Validation intent
 
 - All report metadata must match the same terminal inventory used for synthesis
+- The frozen inventory is validated during the run and may remain ephemeral; repository fixtures are optional golden tests, not a fourth publication file
 - Required level-2 sections count only as exact Markdown headings, exactly once each, in fixed order
 - Bias must be structured with explicit sample, medium, geography, missing-voice, and consequence fields
 - Every inventory item must appear exactly once under `<!-- source-item:item-.. -->`

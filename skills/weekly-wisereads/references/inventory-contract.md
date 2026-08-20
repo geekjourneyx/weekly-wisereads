@@ -18,6 +18,10 @@ An inventory payload uses `schema_version: 1` and contains one `issue` object pl
 
 `detail_page_item_count` is normative. Synthesis is blocked unless it matches the number of inventory items and the number of terminal SourceCards.
 
+## Persistence boundary
+
+The frozen inventory is run-local validation state. It must be validated, retained through report validation, and supplied to the report validator before publication. It must not become a fourth publication file: durable processing state remains the published report identity, while `tests/fixtures/issues/**/inventory.json` is reserved for optional golden test cases.
+
 ## Item identity and ordering
 
 Every `items[]` entry maps directly to one visually independent recommendation on the issue detail page.

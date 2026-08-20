@@ -1,6 +1,8 @@
 from pathlib import Path
 import re
 
+from build_publication import discover_reports
+
 
 ROOT = Path(__file__).resolve().parents[1]
 README = ROOT / "README.md"
@@ -84,17 +86,19 @@ def test_readme_managed_blocks_publish_one_latest_and_bounded_recent_archive():
     text = _readme()
     latest = _managed_body(text, "LATEST")
     recent = _managed_body(text, "RECENT")
+    newest = discover_reports(ROOT)[0]
 
     assert latest.count("\n") == 0
-    assert "Vol. 155" in latest
-    assert "reports/2026/2026-08-12-vol-155.md" in latest
+    assert newest.meta.issue_label in latest
+    assert newest.path in latest
 
     issue_lines = [
         line for line in recent.splitlines()
         if line.startswith("- [") and "完整归档" not in line
     ]
     assert 1 <= len(issue_lines) <= 6
-    assert "Vol. 155" in issue_lines[0]
+    assert newest.meta.issue_label in issue_lines[0]
+    assert newest.path in issue_lines[0]
     assert "- [完整归档](reports/README.md)" in recent
 
 

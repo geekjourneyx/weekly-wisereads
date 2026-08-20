@@ -281,16 +281,9 @@ def _validate_release_metadata(repo_root: Path, report_entries) -> list[Finding]
         ]
 
         if not matches:
-            findings.append(
-                Finding(
-                    code="REPOSITORY_INVENTORY_MISSING",
-                    path=entry.path,
-                    message=(
-                        "Release reports must have exactly one matching metadata inventory under "
-                        "tests/fixtures/issues/**/inventory.json keyed by issue_key and canonical source_url."
-                    ),
-                )
-            )
+            # Scheduled publication validates the report against its frozen,
+            # run-local inventory before building the exact three-file plan.
+            # Repository fixtures are optional golden cases, not publication state.
             continue
 
         if len(matches) > 1:

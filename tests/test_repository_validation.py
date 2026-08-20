@@ -233,7 +233,7 @@ def test_release_phase_rejects_atomic_protocol_drift(tmp_path: Path):
     assert after == before
 
 
-def test_release_phase_rejects_missing_matching_inventory(tmp_path: Path):
+def test_release_phase_allows_ephemeral_inventory_after_report_validation(tmp_path: Path):
     repo = make_repo(tmp_path, "release")
     (repo / "tests" / "fixtures" / "issues" / "vol-155" / "inventory.json").unlink()
     before = _tree_digest(repo)
@@ -241,8 +241,7 @@ def test_release_phase_rejects_missing_matching_inventory(tmp_path: Path):
     findings = validate_repository(repo, phase="release")
 
     after = _tree_digest(repo)
-    assert "REPOSITORY_INVENTORY_MISSING" in _codes(findings)
-    _assert_findings_are_sorted(findings)
+    assert findings == []
     assert after == before
 
 
@@ -298,6 +297,12 @@ def test_atomic_protocol_reference_contains_required_invariants():
         "Re-read all three published files",
     ):
         assert token in protocol
+
+    inventory_contract = (
+        ROOT / "skills" / "weekly-wisereads" / "references" / "inventory-contract.md"
+    ).read_text(encoding="utf-8")
+    assert "The frozen inventory is run-local validation state" in inventory_contract
+    assert "must not become a fourth publication file" in inventory_contract
 
 
 def _rewrite_report(report_text: str, replacements: dict[str, str]) -> str:
