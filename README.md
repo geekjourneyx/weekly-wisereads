@@ -11,7 +11,7 @@ Weekly Wisereads 不是 AI 周报。主题由当期内容决定；AI / Agent / �
 ## Latest Issue
 
 <!-- AUTO:LATEST:START -->
-- [Vol. 155｜Wisereads Vol. 155 深度解读：当执行变便宜，判断与选择权变得更贵](reports/2026/2026-08-12-vol-155.md)
+- [Vol. 156｜Wisereads Vol. 156 深度解读：当答案变便宜，能力、意义与制衡更稀缺](reports/2026/2026-08-20-vol-156.md)
 <!-- AUTO:LATEST:END -->
 
 ## What Is Weekly Wisereads
@@ -78,6 +78,7 @@ Weekly Wisereads 不是 AI 周报。主题由当期内容决定；AI / Agent / �
 ## Archive
 
 <!-- AUTO:RECENT:START -->
+- [Vol. 156｜Wisereads Vol. 156 深度解读：当答案变便宜，能力、意义与制衡更稀缺](reports/2026/2026-08-20-vol-156.md)
 - [Vol. 155｜Wisereads Vol. 155 深度解读：当执行变便宜，判断与选择权变得更贵](reports/2026/2026-08-12-vol-155.md)
 
 - [完整归档](reports/README.md)
