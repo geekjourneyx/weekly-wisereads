@@ -11,7 +11,7 @@ Weekly Wisereads 不是 AI 周报。主题由当期内容决定；AI / Agent / �
 ## Latest Issue
 
 <!-- AUTO:LATEST:START -->
-- [Vol. 160｜Wisereads Vol. 160 深度解读：真正塑造人的，不只是意志，还有所处的结构](reports/2026/2026-09-14-vol-160.md)
+- [Vol. 161｜Wisereads Vol. 161 深度解读：规模越大，越需要把反馈和边界写进系统](reports/2026/2026-09-21-vol-161.md)
 <!-- AUTO:LATEST:END -->
 
 ## What Is Weekly Wisereads
@@ -78,12 +78,12 @@ Weekly Wisereads 不是 AI 周报。主题由当期内容决定；AI / Agent / �
 ## Archive
 
 <!-- AUTO:RECENT:START -->
+- [Vol. 161｜Wisereads Vol. 161 深度解读：规模越大，越需要把反馈和边界写进系统](reports/2026/2026-09-21-vol-161.md)
 - [Vol. 160｜Wisereads Vol. 160 深度解读：真正塑造人的，不只是意志，还有所处的结构](reports/2026/2026-09-14-vol-160.md)
 - [Vol. 159｜Wisereads Vol. 159 深度解读：口头目标之外，真正塑造行为的是系统](reports/2026/2026-09-07-vol-159.md)
 - [Vol. 158｜Wisereads Vol. 158 深度解读：当产出变多，真正稀缺的是判断、理解与承诺](reports/2026/2026-08-31-vol-158.md)
 - [Vol. 157｜Wisereads Vol. 157 深度解读：当世界更方便，我们如何保住判断、惊奇与希望](reports/2026/2026-08-24-vol-157.md)
 - [Vol. 156｜Wisereads Vol. 156 深度解读：当答案变便宜，能力、意义与制衡更稀缺](reports/2026/2026-08-20-vol-156.md)
-- [Vol. 155｜Wisereads Vol. 155 深度解读：当执行变便宜，判断与选择权变得更贵](reports/2026/2026-08-12-vol-155.md)
 
 - [完整归档](reports/README.md)
 <!-- AUTO:RECENT:END -->
