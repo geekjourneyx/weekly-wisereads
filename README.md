@@ -11,7 +11,7 @@ Weekly Wisereads 不是 AI 周报。主题由当期内容决定；AI / Agent / �
 ## Latest Issue
 
 <!-- AUTO:LATEST:START -->
-- [Vol. 165｜Wisereads Vol. 165 深度解读：生成越来越便宜，稀缺的是验证、所有权与可逆选择](reports/2026/2026-10-19-vol-165.md)
+- [Vol. 166｜Wisereads Vol. 166 深度解读：能力越强，越需要决定什么值得追求](reports/2026/2026-10-26-vol-166.md)
 <!-- AUTO:LATEST:END -->
 
 ## What Is Weekly Wisereads
@@ -78,12 +78,12 @@ Weekly Wisereads 不是 AI 周报。主题由当期内容决定；AI / Agent / �
 ## Archive
 
 <!-- AUTO:RECENT:START -->
+- [Vol. 166｜Wisereads Vol. 166 深度解读：能力越强，越需要决定什么值得追求](reports/2026/2026-10-26-vol-166.md)
 - [Vol. 165｜Wisereads Vol. 165 深度解读：生成越来越便宜，稀缺的是验证、所有权与可逆选择](reports/2026/2026-10-19-vol-165.md)
 - [Vol. 164｜Wisereads Vol. 164 深度解读：能力可以自组织，方向、边界与意义仍需人为选择](reports/2026/2026-10-12-vol-164.md)
 - [Vol. 163｜Wisereads Vol. 163 深度解读：产出越来越快，理解、验证与意义必须跟上](reports/2026/2026-10-05-vol-163.md)
 - [Vol. 162｜Wisereads Vol. 162 深度解读：工具可以替你行动，判断与责任不能外包](reports/2026/2026-09-28-vol-162.md)
 - [Vol. 161｜Wisereads Vol. 161 深度解读：规模越大，越需要把反馈和边界写进系统](reports/2026/2026-09-21-vol-161.md)
-- [Vol. 160｜Wisereads Vol. 160 深度解读：真正塑造人的，不只是意志，还有所处的结构](reports/2026/2026-09-14-vol-160.md)
 
 - [完整归档](reports/README.md)
 <!-- AUTO:RECENT:END -->
